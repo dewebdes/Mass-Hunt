@@ -1,0 +1,20 @@
+ShardGate/
+├── build/
+├── src/
+│   └── ShardGate.java
+├── lib/
+│   └── burp-ext-api.jar
+├── ShardGate.burp-extension.properties
+
+javac -cp "lib/burp-extender-api-2.1.jar" -d build src/MassHunt.java
+
+#C:\Program Files\Java\jdk-21\bin
+$env:Path += ";C:\Program Files\Java\jdk-21\bin"
+
+
+jar cf build/MassHunt.jar -C build .
+
+cd node 
+npm install
+
+netstat -aon | findstr :9090

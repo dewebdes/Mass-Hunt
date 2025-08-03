@@ -1,0 +1,46 @@
+{
+  "name": "mass-hunt",
+  "version": "1.0.0",
+  "description": "Symbolic diagnostic socket module for Mass-Hunt feed capture and analysis",
+  "main": "socket.js",
+  "type": "module",
+  "author": {
+    "name": "Kave",
+    "email": "eynikave@gmail.com",
+    "url": "https://github.com/dewebdes"
+  },
+  "contributors": [
+    {
+      "name": "Copilot",
+      "email": "copilot@microsoft.com",
+      "url": "https://copilot.microsoft.com"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "diagnostics",
+    "CORS",
+    "socket",
+    "modular",
+    "Mass-Hunt",
+    "security",
+    "Burp",
+    "symbolic"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dewebdes/Mass-Hunt"
+  },
+  "scripts": {
+    "start": "node socket.js",
+    "dev": "nodemon socket.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
