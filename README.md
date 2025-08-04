@@ -1,4 +1,6 @@
-# ![Mass-Hunt Logo](/image/logo.png)
+<p align="center">
+  <img src="/image/logo.png" alt="Mass-Hunt Logo" width="180"/>
+</p>
 
 # 🕸️ Mass-Hunt
 
