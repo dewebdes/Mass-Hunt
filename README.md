@@ -1,4 +1,5 @@
-````markdown
+# ![Mass-Hunt Logo](/image/logo.png)
+
 # 🕸️ Mass-Hunt
 
 **Mass-Hunt** is a symbolic diagnostic socket module designed to interface with the Mass-Mirror architecture. Each feed, pulse, and anomaly passing through this shard is part of a larger narratable flow—coded clarity meets poetic investigation.
@@ -27,7 +28,6 @@ Modules here are:
 cd node
 npm install
 ```
-````
 
 ### 2. Start the Socket Listener
 
@@ -117,12 +117,8 @@ MIT – Open for reinterpretation, remix, and refraction.
 
 ## 🪞 Related Projects
 
-- [Mass-Mirror](https://github.com/dewebdes/Mass-Mirror): Modular diagnostic ecosystem and symbolic UI renderer
+- [Mass-Mirror](https://github.com/dewebdes/Mass-Mirror): Modular diagnostic engine for passive browser flows, symbolic feed orchestration, and dashboard visualization
 
 ---
 
 Each socket emission is a scene. Each classifier a lens. Let the hunt begin. 🐾🪞
-
-```
-
-```
