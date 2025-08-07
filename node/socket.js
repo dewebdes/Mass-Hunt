@@ -1,8 +1,8 @@
-// socket.js
-
 import { WebSocketServer } from 'ws';
 import { corsChecker } from './diagnostics/corsChecker.js';
 import { isSimpleRequest } from './diagnostics/simpleRequestClassifier.js';
+import { cookieGhost } from './diagnostics/cookieGhost.js';
+import { isDomainBlocked } from './lib/domainBlocker.js'; // ⛔ Blocklist filter
 
 const wss = new WebSocketServer({ port: 9090 });
 console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
@@ -50,23 +50,67 @@ wss.on('connection', socket => {
                 mirrorTag: "mirror-shard"
             };
 
+            // ⛔ Domain Blocklist Check
+            const domain = (() => {
+                try {
+                    return new URL(flow.url).hostname;
+                } catch {
+                    return null;
+                }
+            })();
+
+            if (isDomainBlocked(domain)) {
+                console.log(`🕳️ Skipped flow from blocked domain: ${domain}`);
+                return;
+            }
+
             console.log(`\n📡 Feed Received → ${flow.feedId} [${flow.pulseMs}ms]`);
             console.log(`🌍 ${flow.method} ${flow.url}`);
             console.log(`📝 Request Body Length: ${flow.requestBody.length}`);
             console.log(`📦 Response Body Length: ${flow.responseBody.length}`);
 
+            // 🛡️ CORS Diagnostic
             const corsResult = corsChecker(flow);
             if (corsResult.flag) {
                 console.log(`🛡️ CORS Flag: true`);
             }
 
+            // 🍪 Ghost Cookie Diagnostic (Response Phase)
+            const ghostResult = cookieGhost({
+                headers: responseHeadersArray,
+                origin: flow.url,
+                phase: 'response'
+            });
+
+            if (ghostResult.flag) {
+                console.log(`👻 Ghost Cookies Relevant to CORS/CSRF:`);
+                ghostResult.relevantCookies.forEach(c => {
+                    console.log(`   🍪 ${c.name}`);
+                    console.log(`      ↪️ Domain: ${c.domain}`);
+                    console.log(`      🔓 CORS-Relevant: ${c.corsRelevant ? '✅' : '❌'}`);
+                    console.log(`      ⚠️ CSRF Risk: ${c.csrfRisk ? '⚠️ Yes' : 'No'}`);
+                });
+            }
+
+            // 🧬 JS-Set Cookie Detection (Request Phase)
+            const jsCookieResult = cookieGhost({
+                requestHeaders: requestHeadersArray,
+                origin: flow.url,
+                phase: 'request'
+            });
+
+            if (jsCookieResult.flag) {
+                console.log(`🧬 JS-Set Cookies Detected:`);
+                jsCookieResult.jsCookies.forEach(name => {
+                    console.log(`   🍪 ${name} → setByJS`);
+                });
+            }
 
             /* const isSimple = isSimpleRequest({
                  method: flow.method,
                  requestHeaders: requestHeadersObj
              });
              console.log(`🔍 Simple Request: ${isSimple ? '✅ Yes' : '❌ No'}`);*/
-
 
         } catch (err) {
             console.error(`[Mass-Mirror] 💥 Failed to process feed: ${err.message}`);
