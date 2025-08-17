@@ -2,9 +2,7 @@ import { WebSocketServer } from 'ws';
 import { corsChecker } from './diagnostics/corsChecker.js';
 import { isSimpleRequest } from './diagnostics/simpleRequestClassifier.js';
 import { cookieGhost } from './diagnostics/cookieGhost.js';
-import { csrfLadder } from './diagnostics/csrfLadder.js'; // 🧱 CSRF diagnostic
 import { isDomainBlocked } from './lib/domainBlocker.js'; // ⛔ Blocklist filter
-import { xssEcho } from './diagnostics/xssEcho.js';
 
 const wss = new WebSocketServer({ port: 9090 });
 console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
@@ -21,7 +19,7 @@ wss.on('connection', socket => {
             }
 
             const parts = raw.split('#massmirror#');
-            if (parts.length < 9) {
+            if (parts.length < 8) {
                 console.warn("⚠️ Feed structure invalid or incomplete");
                 console.log("🧪 Raw Feed:", raw);
                 return;
@@ -31,6 +29,7 @@ wss.on('connection', socket => {
             const flow = parseFeed(parts);
             if (!flow) return;
 
+            // ⛔ Domain Blocklist Check
             const domain = (() => {
                 try {
                     return new URL(flow.url).hostname;
@@ -44,9 +43,9 @@ wss.on('connection', socket => {
                 return;
             }
 
-            // 📡 Feed Summary
+            // 📊 Log Feed Summary
             console.log(`\n📡 Feed Received → ${flow.feedId} [${flow.pulseMs}ms]`);
-            console.log(`🌍 ${flow.method} ${flow.url} → ${flow.statusCode}`);
+            console.log(`🌍 ${flow.method} ${flow.url}`);
             console.log(`📝 Request Body Length: ${flow.requestBody.length}`);
             console.log(`📦 Response Body Length: ${flow.responseBody.length}`);
 
@@ -64,7 +63,13 @@ wss.on('connection', socket => {
             });
 
             if (ghostResult.flag) {
-                console.log(`👻 Ghost Cookies: ${ghostResult.relevantCookies.length} flagged`);
+                console.log(`👻 Ghost Cookies Relevant to CORS/CSRF:`);
+                ghostResult.relevantCookies.forEach(c => {
+                    console.log(`   🍪 ${c.name}`);
+                    console.log(`      ↪️ Domain: ${c.domain}`);
+                    console.log(`      🔓 CORS-Relevant: ${c.corsRelevant ? '✅' : '❌'}`);
+                    console.log(`      ⚠️ CSRF Risk: ${c.csrfRisk ? '⚠️ Yes' : 'No'}`);
+                });
             }
 
             // 🧬 JS-Set Cookie Detection (Request Phase)
@@ -75,21 +80,17 @@ wss.on('connection', socket => {
             });
 
             if (jsCookieResult.flag) {
-                console.log(`🧬 JS-Set Cookies: ${jsCookieResult.jsCookies.length} detected`);
+                console.log(`🧬 JS-Set Cookies Detected:`);
+                jsCookieResult.jsCookies.forEach(name => {
+                    console.log(`   🍪 ${name} → setByJS`);
+                });
             }
 
-            // 🧱 CSRF Ladder Diagnostic
-            const csrfResult = csrfLadder(flow);
-            if (csrfResult.flag) {
-                console.log(`⚠️ CSRF Ladder: ${csrfResult.cookies.length} CORS-relevant cookies → ${csrfResult.message}`);
-            }
-
-            // 🧨 XSS Echo Diagnostic
-            const xssResult = xssEcho(flow);
-            if (xssResult.flag) {
-                console.log(`⚠️ XSS Echo: ${xssResult.echoed.length} strings reflected`);
-            }
-
+            /* const isSimple = isSimpleRequest({
+                 method: flow.method,
+                 requestHeaders: flow.requestHeadersObj
+             });
+             console.log(`🔍 Simple Request: ${isSimple ? '✅ Yes' : '❌ No'}`);*/
 
         } catch (err) {
             console.error(`[Mass-Mirror] 💥 Failed to process feed: ${err.message}`);
@@ -109,11 +110,10 @@ function parseFeed(parts) {
         const pulseMs = parseInt(parts[2], 10);
         const method = parts[3];
         const url = parts[4];
-        const statusCode = parts[5];
-        const reqHeadersRaw = parts[6];
-        const reqBody = parts[7];
-        const resHeadersRaw = parts[8];
-        const resBody = parts[9];
+        const reqHeadersRaw = parts[5];
+        const reqBody = parts[6];
+        const resHeadersRaw = parts[7];
+        const resBody = parts[8];
 
         const requestHeadersArray = reqHeadersRaw.split('\n').map(line => {
             const [name, ...rest] = line.split(':');
@@ -135,7 +135,6 @@ function parseFeed(parts) {
             pulseMs,
             method,
             url,
-            statusCode,
             requestHeadersArray,
             requestHeadersObj,
             responseHeadersArray,

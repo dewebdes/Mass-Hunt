@@ -1,1 +1,0 @@
-{"timestamp":"2025-08-07T21:54:44.950Z","module":"corsChecker","url":"https://0a860060048ff840824f4c18003b00c1.web-security-academy.net:443/accountDetails","headers":[{"name":"Access-Control-Allow-Credentials","value":"true"}],"pulseMs":428,"feedId":"FEED-30","mirrorTag":"mirror-shard","narrative":"Access-Control headers detected","shardHint":"Potential CORS exposure"}

@@ -18,10 +18,19 @@ public class MassHunt implements IHttpListener, IBurpExtender {
     private PrintWriter stdout;
     private PrintWriter stderr;
 
-    private final Map<String, byte[]> requestMap = new HashMap<>();
-    private final Map<String, Long> requestTimeMap = new HashMap<>();
+    private final Map<String, RequestMeta> requestMetaMap = new HashMap<>();
     private int feedCounter = 0;
     private static final String DELIMITER = "#massmirror#";
+
+    private static class RequestMeta {
+        byte[] request;
+        long timestamp;
+
+        RequestMeta(byte[] request, long timestamp) {
+            this.request = request;
+            this.timestamp = timestamp;
+        }
+    }
 
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks callbacks) {
@@ -56,18 +65,23 @@ public class MassHunt implements IHttpListener, IBurpExtender {
 
     @Override
     public void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse message) {
-        String key = generateKey(message);
-
         if (messageIsRequest) {
-            requestMap.put(key, message.getRequest());
-            requestTimeMap.put(key, System.currentTimeMillis());
+            String requestId = UUID.randomUUID().toString();
+            message.setComment(requestId); // Embed ID into Burp message
+            requestMetaMap.put(requestId, new RequestMeta(message.getRequest(), System.currentTimeMillis()));
             return;
         }
 
-        byte[] req = requestMap.remove(key);
+        String requestId = message.getComment(); // Retrieve ID from Burp message
+        if (requestId == null || !requestMetaMap.containsKey(requestId)) {
+            stderr.println("[Warning] Missing requestId for response.");
+            return;
+        }
+
+        RequestMeta meta = requestMetaMap.remove(requestId);
+        byte[] req = (meta != null) ? meta.request : null;
         byte[] res = message.getResponse();
-        Long startTime = requestTimeMap.remove(key);
-        long pulseMs = (startTime != null) ? (System.currentTimeMillis() - startTime) : -1;
+        long pulseMs = (meta != null) ? (System.currentTimeMillis() - meta.timestamp) : -1;
 
         if (req == null || res == null) {
             stderr.println("[Warning] Missing request or response for FEED-" + feedCounter);
@@ -78,6 +92,7 @@ public class MassHunt implements IHttpListener, IBurpExtender {
         IResponseInfo resInfo = helpers.analyzeResponse(res);
 
         String method = reqInfo.getMethod();
+        int statusCode = resInfo.getStatusCode(); // ✅ Extract status code
 
         String url;
         try {
@@ -105,9 +120,11 @@ public class MassHunt implements IHttpListener, IBurpExtender {
         String feedId = "FEED-" + (++feedCounter);
         String structuredFeed = String.join(DELIMITER,
                 "PAIR_FEED:" + feedId,
+                requestId,
                 Long.toString(pulseMs),
                 method,
                 url,
+                Integer.toString(statusCode), // ✅ Insert status code
                 reqHeaders,
                 reqBody,
                 resHeaders,
@@ -122,13 +139,5 @@ public class MassHunt implements IHttpListener, IBurpExtender {
             return "";
         byte[] body = Arrays.copyOfRange(bytes, offset, bytes.length);
         return new String(body, StandardCharsets.UTF_8);
-    }
-
-    private String generateKey(IHttpRequestResponse message) {
-        IRequestInfo info = helpers.analyzeRequest(message);
-        String host = info.getUrl().getHost();
-        String path = info.getUrl().getPath();
-        String method = info.getMethod();
-        return host + "|" + method + "|" + path;
     }
 }
