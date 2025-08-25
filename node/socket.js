@@ -5,6 +5,7 @@ import { cookieGhost } from './diagnostics/cookieGhost.js';
 import { csrfLadder } from './diagnostics/csrfLadder.js'; // 🧱 CSRF diagnostic
 import { isDomainBlocked } from './lib/domainBlocker.js'; // ⛔ Blocklist filter
 import { xssEcho } from './diagnostics/xssEcho.js';
+import { storedXssArchivist } from './diagnostics/storedXssArchivist.js';
 
 const wss = new WebSocketServer({ port: 9090 });
 console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
@@ -88,6 +89,11 @@ wss.on('connection', socket => {
             const xssResult = xssEcho(flow);
             if (xssResult.flag) {
                 console.log(`⚠️ XSS Echo: ${xssResult.echoed.length} strings reflected`);
+            }
+
+            const storedXssResult = storedXssArchivist(flow);
+            if (storedXssResult.flag) {
+                console.log(`🧠 Stored XSS: ${storedXssResult.message}`);
             }
 
 

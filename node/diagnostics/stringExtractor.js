@@ -18,6 +18,12 @@ export function stringExtractor(flow) {
         ).values()
     );
 
+    // Add reflectionHint to request strings based on presence in response
+    const responseSet = new Set(responseStrings.map(s => normalize(s.value)));
+    requestStrings.forEach(s => {
+        s.reflectionHint = responseSet.has(normalize(s.value)) ? 'reflected' : 'not-reflected';
+    });
+
     return {
         requestStrings,
         responseStrings,
