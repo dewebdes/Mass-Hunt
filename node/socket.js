@@ -6,6 +6,7 @@ import { csrfLadder } from './diagnostics/csrfLadder.js'; // 🧱 CSRF diagnosti
 import { isDomainBlocked } from './lib/domainBlocker.js'; // ⛔ Blocklist filter
 import { xssEcho } from './diagnostics/xssEcho.js';
 import { storedXssArchivist } from './diagnostics/storedXssArchivist.js';
+import { scanResponse } from './diagnostics/sensitiveKeywordHunter.js';
 
 const wss = new WebSocketServer({ port: 9090 });
 console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
@@ -95,6 +96,8 @@ wss.on('connection', socket => {
             if (storedXssResult.flag) {
                 console.log(`🧠 Stored XSS: ${storedXssResult.message}`);
             }
+
+            scanResponse(flow.responseBody, { url: flow.url });
 
 
         } catch (err) {

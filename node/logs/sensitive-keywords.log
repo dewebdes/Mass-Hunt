@@ -1,0 +1,6 @@
+[2025-08-26T19:15:09.901Z] https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/?search=scobar
+Found: document.write, Function, https, query, xss
+
+[2025-08-26T19:15:26.100Z] https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/?search=scobar
+Found: document.write, Function, https, query, xss
+

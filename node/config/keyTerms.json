@@ -1,0 +1,16 @@
+{
+  "keyTerms": [
+    "eval", "innerHTML", "document.write", "setTimeout", "setInterval", "location.href", "location.assign",
+    "location.replace", "Function", "setAttribute", "onclick", "insertAdjacentHTML", "window.open",
+    "XMLHttpRequest", "fetch", "document.domain", "window.name", "history.pushState", "history.replaceState",
+    "localStorage.setItem", "sessionStorage.setItem", "indexedDB.open", "WebSocket.send", "document.cookie",
+    "document.open", "document.close", "document.implementation.createHTMLDocument", "document.implementation.createDocument",
+    "document.implementation.createDocumentFragment", "document.implementation.createNodeIterator", "document.implementation.createTreeWalker",
+    "admin", "password", "secret", "user", "login", "credentials", "token", "auth", "access", "account",
+    "session", "root", "secure", "encryption", "key", "hash", "certificate", "https", "private", "public",
+    "verify", "validate", "database", "sql", "query", "sensitive", "protected", "privileged", "vault", "backup",
+    "adminPanel", "userManagement", "tokenId", "creditCard", "socialSecurity", "apiKey", "jwt", "csrf", "xss",
+    "injection", "exploit", "vulnerability", "malware", "phishing", "breach", "compliance", "regulation", "identity",
+    "firewall", "antivirus"
+  ]
+}

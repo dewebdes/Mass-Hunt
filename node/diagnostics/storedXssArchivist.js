@@ -22,11 +22,11 @@ export function storedXssArchivist(flow) {
 
     if (echoed.length > 0) {
         const anomalyDetails = {
+            echoed,
             timestamp: new Date().toISOString(),
             module: "storedXssArchivist",
             url: flow.url,
             statusCode: flow.statusCode || "unknown",
-            echoed,
             feedId: flow.feedId || "unknown",
             mirrorTag: flow.mirrorTag || "mirror-shard",
             narrative: `${echoed.length} previously seen strings echoed in response`,

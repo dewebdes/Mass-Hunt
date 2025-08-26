@@ -51,11 +51,11 @@ export function xssEcho(flow) {
 
     // 🧱 Build anomaly object
     const anomalyDetails = {
+        echoed,
         timestamp: new Date().toISOString(),
         module: "xssEcho",
         url: flow.url,
         statusCode: flow.statusCode || "unknown",
-        echoed,
         pulseMs: flow.pulseMs,
         feedId: flow.feedId || "unknown",
         mirrorTag: flow.mirrorTag || "mirror-shard",
