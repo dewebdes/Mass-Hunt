@@ -71,7 +71,18 @@ export function xssEcho(flow) {
     });
 
     // 📂 Archive to file
-    fs.appendFile(logPath, JSON.stringify(anomalyDetails) + '\n', err => {
+    /*fs.appendFile(logPath, JSON.stringify(anomalyDetails) + '\n', err => {
+        if (err) console.error("Log write failed:", err);
+    });*/
+    // 📂 Archive to file (custom format)
+    const logEntry = [
+        flow.url,
+        echoed.map(e => e.original).join(', '),
+        anomalyDetails.riskScore,
+        '' // separator line
+    ].join('\n');
+
+    fs.appendFile(logPath, logEntry + '\n', err => {
         if (err) console.error("Log write failed:", err);
     });
 

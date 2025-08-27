@@ -1,122 +1,384 @@
-{"timestamp":"2025-08-25T23:11:05.313Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/CACHE/js/output.21a69f49335b.js","statusCode":"200","echoed":["All"],"feedId":"FEED-28","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:05.598Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/roomlist-prefetch.65e8428f800c.js","statusCode":"200","echoed":["All","active","navigate","document","script"],"feedId":"FEED-30","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:11:05.854Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-3.css?f49289dba297","statusCode":"200","echoed":["image"],"feedId":"FEED-34","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:05.987Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-2.css?f215bebda57f","statusCode":"200","echoed":["image"],"feedId":"FEED-35","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:06.132Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-1.css?f1f24fe0d99b","statusCode":"200","echoed":["139","image"],"feedId":"FEED-36","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:06.136Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/gendericons/anon.svg","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-37","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:06.261Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/runtime-react-07b2ab9c52613c74fcd2.js","statusCode":"200","echoed":["document","web.static.mmcdn.com","script"],"feedId":"FEED-41","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:11:06.352Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/runtime-prod-c82eced9d7677a8c6f37.js","statusCode":"200","echoed":["document","web.static.mmcdn.com","script"],"feedId":"FEED-42","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:11:06.763Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/904-react-5611ad722724724c65bc.js","statusCode":"200","echoed":["stable","All","image","active","none","navigate","document","script","style"],"feedId":"FEED-55","mirrorTag":"mirror-shard","narrative":"9 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:11:07.125Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/desktop_spa-react-4f2a8bd92eb34045e922.js","statusCode":"200","echoed":["active","document","style"],"feedId":"FEED-58","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:11:07.438Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/userinfoarrowdown.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-65","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:07.735Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/logo.svg?hash=65e8428f800c","statusCode":"200","echoed":["0.9","style"],"feedId":"FEED-71","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:07.868Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/chat-bubble-gray.svg?7d187139b245","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-75","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:07.939Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/search.svg?515fad030780","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-76","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:08.061Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/cb-footer-address-US.svg?32f8dfba1611","statusCode":"200","echoed":["139","none"],"feedId":"FEED-77","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:08.113Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/socialmediaicons/social-media-twitter-x.svg?e691b5a2dd4a","statusCode":"200","echoed":["none","style"],"feedId":"FEED-78","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:07.790Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/bell_inactive.svg?b7c610114958","statusCode":"200","echoed":["none"],"feedId":"FEED-72","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:09.499Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/option_close.svg","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-90","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:09.658Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/pms/icon-search.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-91","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:09.708Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/ico-trans.svg?4984008acb01","statusCode":"200","echoed":["139","0.9","none"],"feedId":"FEED-94","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:11:09.770Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip","statusCode":"200","echoed":["2025"],"feedId":"FEED-97","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:09.786Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000","statusCode":"200","echoed":["active","style"],"feedId":"FEED-98","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:09.799Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0","statusCode":"200","echoed":["active","style"],"feedId":"FEED-99","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:11:09.874Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/arrow-right-page.svg?7eb5ee13a7eb","statusCode":"200","echoed":["none"],"feedId":"FEED-100","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:11:10.256Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/cdn-cgi/challenge-platform/h/b/scripts/jsd/4710d66e8fda/main.js?","statusCode":"200","echoed":["none","document","style","XMLHttpRequest","POST"],"feedId":"FEED-108","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:11:11.621Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/favicons/manifest.json?hash=65e8428f800c","statusCode":"200","echoed":["image"],"feedId":"FEED-180","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:26:11.707Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0","statusCode":"200","echoed":["Brand","139","2025","active","5935","_ga","1000","thumb.live.mmcdn.com",":false,","false","username","perf",":[{"],"feedId":"FEED-192","mirrorTag":"mirror-shard","narrative":"13 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:26:12.953Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip","statusCode":"200","echoed":["2025","twitter_feed","status","url"],"feedId":"FEED-195","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:26:13.136Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-196","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:26:13.259Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-197","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:14.436Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/CACHE/js/output.967b6923d9ea.js","statusCode":"200","echoed":["document","result",":false,","false"],"feedId":"FEED-315","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:14.475Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/CACHE/js/output.21a69f49335b.js","statusCode":"200","echoed":["All","script","XMLHttpRequest","content-type","result","entries","status"],"feedId":"FEED-318","mirrorTag":"mirror-shard","narrative":"7 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:14.500Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/roomlist-prefetch.65e8428f800c.js","statusCode":"200","echoed":["All","active","navigate","document","script","XMLHttpRequest","false","perf","entries","status","url"],"feedId":"FEED-319","mirrorTag":"mirror-shard","narrative":"11 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:14.737Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-3.css?f49289dba297","statusCode":"200","echoed":["image","url"],"feedId":"FEED-325","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:14.887Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-1.css?f1f24fe0d99b","statusCode":"200","echoed":["139","image","url"],"feedId":"FEED-326","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:28:15.033Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/css/twemoji-sprite-2.css?f215bebda57f","statusCode":"200","echoed":["image","url"],"feedId":"FEED-327","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:15.090Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0","statusCode":"200","echoed":["Brand","139","2025","active","0.9","5935","_ga","1000","thumb.live.mmcdn.com",":false,","false","username","perf",":[{"],"feedId":"FEED-330","mirrorTag":"mirror-shard","narrative":"14 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:15.342Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/vendor/fingerprintjs-pro-anontest.min.js?3.11.14","statusCode":"200","echoed":["Google","139","stable","2025","Copyright","All","active","none","navigate","document","script","style","empty","5935","XMLHttpRequest","1000","result","5160","perf","text/plain","entries","protocol","status","url","chrome","1048","3819"],"feedId":"FEED-337","mirrorTag":"mirror-shard","narrative":"27 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:15.521Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/CACHE/js/output.d9d3acc98720.js","statusCode":"200","echoed":["document"],"feedId":"FEED-338","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:15.659Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/2047-prod-66964fb51ad5198263e6.js","statusCode":"200","echoed":["All","image","active","none","navigate","document","script","style","status","url","1048"],"feedId":"FEED-341","mirrorTag":"mirror-shard","narrative":"11 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:15.729Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/chat-bubble-gray.svg?7d187139b245","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-342","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:15.767Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/search.svg?515fad030780","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-344","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:15.899Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/logo.svg?hash=65e8428f800c","statusCode":"200","echoed":["0.9","style","url"],"feedId":"FEED-352","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:28:15.955Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/cb-footer-address-US.svg?32f8dfba1611","statusCode":"200","echoed":["139","none","1000"],"feedId":"FEED-356","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:28:16.074Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/desktop_spa-react-4f2a8bd92eb34045e922.js","statusCode":"200","echoed":["active","document","style"],"feedId":"FEED-362","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"timestamp":"2025-08-25T23:28:16.286Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/904-react-5611ad722724724c65bc.js","statusCode":"200","echoed":["stable","All","image","active","none","navigate","document","script","style","empty","POST","result","application/x-www-form-urlencoded","manifest","text/plain","entries",":[{","protocol","status","url"],"feedId":"FEED-372","mirrorTag":"mirror-shard","narrative":"20 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:16.200Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/userinfoarrowdown.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-371","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:16.868Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/pms/empty-chat-state.svg","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-397","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:16.980Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/pms/icon-search.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-399","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.007Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip","statusCode":"200","echoed":["2025","twitter_feed","status","url"],"feedId":"FEED-400","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.044Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-401","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.092Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/chat.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-402","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.148Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-405","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.153Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/ellipsis-vertical.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-406","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.158Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/cam-to-cam.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-407","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.188Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/thumbs-up-active.svg","statusCode":"200","echoed":["139","2025","0.9","none","7004","url"],"feedId":"FEED-409","mirrorTag":"mirror-shard","narrative":"6 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.171Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/thumbs-up-inactive.svg","statusCode":"200","echoed":["139","2025","0.9","none","7004","url"],"feedId":"FEED-408","mirrorTag":"mirror-shard","narrative":"6 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.203Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/thumbs-down-inactive.svg","statusCode":"200","echoed":["139","0.9","none","url","2955"],"feedId":"FEED-410","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.216Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/more-rooms.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-415","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.212Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/ico-male.svg?251793534c73","statusCode":"200","echoed":["0.9","none","style","url","1048"],"feedId":"FEED-414","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:17.225Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/tip-icon.svg","statusCode":"200","echoed":["0.9","none"],"feedId":"FEED-419","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:28:17.229Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/tsdefaultassets/theaterVideoControlsIcons/theater-mode.svg","statusCode":"200","echoed":["none"],"feedId":"FEED-421","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.366Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/images/arrow-right-page.svg?7eb5ee13a7eb","statusCode":"200","echoed":["none"],"feedId":"FEED-425","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:28:17.563Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/cdn-cgi/challenge-platform/h/b/scripts/jsd/4710d66e8fda/main.js?","statusCode":"200","echoed":["none","document","style","XMLHttpRequest","POST","status"],"feedId":"FEED-429","mirrorTag":"mirror-shard","narrative":"6 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:28:20.034Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/favicons/manifest.json?hash=65e8428f800c","statusCode":"200","echoed":["image","chrome"],"feedId":"FEED-503","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"timestamp":"2025-08-25T23:42:29.931Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/70-react-b2918477e30a3c365b08.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-515","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:29.983Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/904-react-5611ad722724724c65bc.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-517","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.019Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/desktop_spa-react-4f2a8bd92eb34045e922.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-520","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.066Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/lib-react-6b4225af5e1a243b221e.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-526","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.069Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/489-react-d2d0fca565526698a268.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-527","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.072Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/267-react-00583a5a8da8a6e092f8.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-528","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.076Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/252-react-86878d0284c53c085f96.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-531","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.054Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/6802-prod-83c4bee7498668489272.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-522","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.081Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/SPAPage-prod-89e2b1818d41f14d1b1a.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-537","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.064Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/414-react-00e628d620b4874b49d3.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-524","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:42:30.079Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/8713-prod-19d499efc781a4ae3ae6.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-533","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:43:17.626Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?hidden=true&limit=90&offset=0&private=false","statusCode":"200","echoed":["139","2025","active","0.9","5935","_ga","thumb.live.mmcdn.com",":false,","false","username","fsh",":[{","url",":true,","807"],"feedId":"FEED-539","mirrorTag":"mirror-shard","narrative":"15 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:43:17.739Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0","statusCode":"200","echoed":["2025","active","0.9","5935","_ga","1000","thumb.live.mmcdn.com",":false,","false","username",":[{",":true,","807","true"],"feedId":"FEED-540","mirrorTag":"mirror-shard","narrative":"14 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:58:18.965Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0","statusCode":"200","echoed":["139","2025","active","0.9","_ga","1000","thumb.live.mmcdn.com",":false,","false","username","2202",":[{",":true,","807","true"],"feedId":"FEED-565","mirrorTag":"mirror-shard","narrative":"15 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:58:20.047Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/3027-prod-6006f81944207ff93d5f.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-569","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.062Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/300-react-a74404002860cb574642.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-570","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.069Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/489-react-d2d0fca565526698a268.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-573","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.159Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/8713-prod-19d499efc781a4ae3ae6.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-574","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.170Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/6039-prod-3aa52c919954160b869b.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-575","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.182Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/2047-prod-66964fb51ad5198263e6.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-576","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.192Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/9917-prod-eecbf457ea0d3193fe61.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-578","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.204Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/570-react-4f6f0423003744cda96c.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-579","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.220Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/2998-prod-24c3c8e6186011d2ed34.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-583","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.293Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/97-react-5f0f1cd9cf5c4d1f9b43.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-585","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.773Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/lib-react-6b4225af5e1a243b221e.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-587","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.920Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/792-react-424493370e998261cd5e.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-588","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:20.958Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip","statusCode":"200","echoed":["2025","twitter_feed","status","url","true"],"feedId":"FEED-589","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:58:21.143Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-590","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:58:21.247Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-591","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-25T23:58:22.034Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/desktop_spa-react-4f2a8bd92eb34045e922.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-592","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:25.082Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/8345-prod-1a02594a3b42819189b2.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-612","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-25T23:58:31.150Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/530-react-044ce128d602c0bf3357.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-693","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:22.735Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0","statusCode":"200","echoed":["139","2025","active","0.9","_ga","1000","thumb.live.mmcdn.com",":false,","false","username","perf",":[{",":true,","807","true","2022","973"],"feedId":"FEED-705","mirrorTag":"mirror-shard","narrative":"17 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-26T00:13:23.538Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/runtime-prod-c82eced9d7677a8c6f37.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-709","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.675Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/3027-prod-6006f81944207ff93d5f.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-710","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.763Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/6802-prod-83c4bee7498668489272.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-711","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.827Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/2998-prod-24c3c8e6186011d2ed34.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-718","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.832Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/267-react-00583a5a8da8a6e092f8.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-719","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.881Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/SPAPage-prod-89e2b1818d41f14d1b1a.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-721","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.958Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/70-react-b2918477e30a3c365b08.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-723","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:23.960Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/838-react-fdce6f6c8f56d1f0c963.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-726","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:24.018Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/252-react-86878d0284c53c085f96.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-728","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:24.239Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/570-react-4f6f0423003744cda96c.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-731","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:24.500Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/lib-react-6b4225af5e1a243b221e.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-733","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:24.703Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/792-react-424493370e998261cd5e.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-734","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:24.868Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip","statusCode":"200","echoed":["2025","twitter_feed","status","url","true","973"],"feedId":"FEED-735","mirrorTag":"mirror-shard","narrative":"6 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-26T00:13:24.986Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-736","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-26T00:13:25.055Z","module":"storedXssArchivist","url":"https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0","statusCode":"200","echoed":["active","style","perf","url"],"feedId":"FEED-737","mirrorTag":"mirror-shard","narrative":"4 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"timestamp":"2025-08-26T00:13:26.183Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/desktop_spa-react-4f2a8bd92eb34045e922.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-738","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:28.415Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/8345-prod-1a02594a3b42819189b2.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-755","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T00:13:34.663Z","module":"storedXssArchivist","url":"https://web.static.mmcdn.com:443/cachebust/530-react-044ce128d602c0bf3357.js.map","statusCode":"404","echoed":["UTF-8"],"feedId":"FEED-837","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"timestamp":"2025-08-26T02:43:12.792Z","module":"storedXssArchivist","url":"https://update.googleapis.com:443/service/update2/json?cup2key=15:VbuDQUhjLCqh-Jt0VFl5-2ezOPe7TdTAU897eWdO0c4&cup2hreq=b7235d391f729954c087935a4127eb449662bb0d8d6ceee670837ad20714fa95","statusCode":"200","echoed":["All",":[{","protocol","status","true"],"feedId":"FEED-849","mirrorTag":"mirror-shard","narrative":"5 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":100}
-{"echoed":["document"],"timestamp":"2025-08-26T18:46:42.518Z","module":"storedXssArchivist","url":"https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/resources/labheader/js/labHeader.js","statusCode":"200","feedId":"FEED-2","mirrorTag":"mirror-shard","narrative":"1 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":25}
-{"echoed":["0.8","126"],"timestamp":"2025-08-26T18:46:45.089Z","module":"storedXssArchivist","url":"https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/resources/labheader/images/logoAcademy.svg","statusCode":"200","feedId":"FEED-11","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"echoed":["document","script","image"],"timestamp":"2025-08-26T18:47:24.620Z","module":"storedXssArchivist","url":"https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/?search=scobar","statusCode":"200","feedId":"FEED-15","mirrorTag":"mirror-shard","narrative":"3 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":75}
-{"echoed":["document","scobar"],"timestamp":"2025-08-26T19:10:49.116Z","module":"storedXssArchivist","url":"https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/?search=scobar","statusCode":"200","feedId":"FEED-3","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
-{"echoed":["document","scobar"],"timestamp":"2025-08-26T19:15:26.097Z","module":"storedXssArchivist","url":"https://0a3000660477609280a003b3005e0023.web-security-academy.net:443/?search=scobar","statusCode":"200","feedId":"FEED-3","mirrorTag":"mirror-shard","narrative":"2 previously seen strings echoed in response","shardHint":"Potential Stored XSS","riskScore":50}
+https://chaturbate.com:443/accounts/register/?src=header&auipsrc=navbar
+65e8428f800c, 24279235, 1.295.0, https://chaturbate.com/, 913, false, username, enduser.id
+100
+
+https://web.static.mmcdn.com:443/CACHE/css/output.37f626b16170.css
+header
+25
+
+https://web.static.mmcdn.com:443/cachebust/register-prod-52a13aafa7dbd8deaaae.js
+header
+25
+
+https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip
+twitter_feed
+25
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, username
+50
+
+https://chaturbate.com:443/accounts/ajax_username_assist/?username=wiener
+username, name, wiener
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, username, name, password, gender
+100
+
+https://chaturbate.com:443/accounts/ajax_username_assist/?username=l
+username, name
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, username, name, password, gender
+100
+
+https://chaturbate.com:443/accounts/ajax_username_assist/?username=li
+username, name
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, username, name, password, gender
+100
+
+https://chaturbate.com:443/accounts/ajax_username_assist/?username=lin
+username, name, lin
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, password, gender
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, username, name, password, gender
+100
+
+https://chaturbate.com:443/accounts/ajax_username_assist/?username=linkoskali
+3214, username, name, lin, linkoska, linkoskali
+100
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, password, gender
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, password, gender
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, password, email, gender
+100
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, password, gender
+75
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, gender
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, gender
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, gender
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false, gender
+50
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false
+25
+
+https://chaturbate.com:443/accounts/ajax_validate_register_form/
+false
+25
+
+https://chaturbate.com:443/accounts/ajax_validate_recaptcha3/
+lin, linkoska, linkoskali, linkoskali2
+100
+
+https://chaturbate.com:443/accounts/welcome/
+65e8428f800c, 24279235, 1.295.0, https://chaturbate.com/, rmRmlstSpa2, false, username, enduser.id, header, G-GX0FLQH21P, en-us, anonymous, chaturbate.com, 874, page_view, name, csrfmiddlewaretoken, password, email, gender, subgender, lin, linkoska, linkoskali, linkoskali2, terms, referrer, self, https://chaturbate.com, https://js-agent.newrelic.com, https://www.google.com/recaptcha/, data:, https://static-pub.highwebmedia.com, blob, enforce, 6LdpEXsUAAAAAMkkjaaqylB3rEhR7oPZmLjSjaps
+100
+
+https://web.static.mmcdn.com:443/images/gendericons/female.svg
+913, 874, lin
+75
+
+https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0
+7036, 913, 5308, :false,, false, username, 952, name, password, gender, lin, self, :11,
+100
+
+https://web.static.mmcdn.com:443/vendor/fingerprintjs-pro-cb.min.js?3.11.14
+result, 7036, 913, 5308, 3214, 2172, header, navbar, 3267, 952, 2286, 874, 1476, 6866, name, lin, 2004, referrer
+100
+
+https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip
+twitter_feed, lin
+50
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/messaging/unread/
+username, name
+50
+
+https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000
+password, gender, lin, self
+100
+
+https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0
+password, gender, lin, self
+100
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,
+100
+
+https://chaturbate.com:443/push_service/auth/
+lin
+25
+
+https://realtime.pa.highwebmedia.com:443/comet/connect?access_token=eyJhbGciOiJIUzI1NiIsImtpZCI6IktTS3cyZy5MMzZJU2ciLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE3NTYyNjA3MjMsImV4cCI6MTc1NjM0NzEyMy4wLCJ4LWFibHktY2FwYWJpbGl0eSI6IntcInVzZXI6Z3JvdXBlZDpGTDdTVldWXCI6IFtcInN1YnNjcmliZVwiXX0iLCJ4LWFibHktY2xpZW50SWQiOiIrOTVjMnZraGF4MW4tRkw3U1ZXViJ9.1S39nEyXRvqNz58GKHWpSDg9qszujTatJrGEdGu8_LU&stream=false&heartbeats=true&v=2&agent=ably-js%252F1.2.37%2520browser&remainPresentFor=0&rnd=030782798776711084
++95c2vkhax1n, FL7SVWV
+50
+
+https://realtime.pa.highwebmedia.com:443/comet/e91rT-9MgEbQ9P!vrlrwjlFnzAeQYcPKK4wjH-a92627/recv?access_token=eyJhbGciOiJIUzI1NiIsImtpZCI6IktTS3cyZy5MMzZJU2ciLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE3NTYyNjA3MjMsImV4cCI6MTc1NjM0NzEyMy4wLCJ4LWFibHktY2FwYWJpbGl0eSI6IntcInVzZXI6Z3JvdXBlZDpGTDdTVldWXCI6IFtcInN1YnNjcmliZVwiXX0iLCJ4LWFibHktY2xpZW50SWQiOiIrOTVjMnZraGF4MW4tRkw3U1ZXViJ9.1S39nEyXRvqNz58GKHWpSDg9qszujTatJrGEdGu8_LU&rnd=9346454054427312
+:11,, FL7SVWV, action, channel, user:grouped:FL7SVWV, flags
+100
+
+https://realtime.pa.highwebmedia.com:443/comet/e91rT-9MgEbQ9P!vrlrwjlFnzAeQYcPKK4wjH-a92627/recv?access_token=eyJhbGciOiJIUzI1NiIsImtpZCI6IktTS3cyZy5MMzZJU2ciLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE3NTYyNjA3MjMsImV4cCI6MTc1NjM0NzEyMy4wLCJ4LWFibHktY2FwYWJpbGl0eSI6IntcInVzZXI6Z3JvdXBlZDpGTDdTVldWXCI6IFtcInN1YnNjcmliZVwiXX0iLCJ4LWFibHktY2xpZW50SWQiOiIrOTVjMnZraGF4MW4tRkw3U1ZXViJ9.1S39nEyXRvqNz58GKHWpSDg9qszujTatJrGEdGu8_LU&rnd=5178801246925718
+action
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,, true, :10,
+100
+
+https://sg5.chaturbate.com:443/ls/click?upn=u001.SL8dpuK0ZzMHRH-2FvNUcSV0ajzDF3kHwzip0-2FYGHm9orLrVMsX0auF-2FuhfjOqb80sqDdk1-2BKevORYhBW8eHhn5OblxYPcWnY3Uf5OXvoP4-2BFrEvQcOeYMlA4jffBzo1tIdXca3JR3YeVd6ZSt8pPsQw-3D-3DwQ2M_Q9XiDyFjND6eDwmYI5GmBVRniUHa5MCBk-2BS9wJQImYqpmaBCSeIl6HnbFOF4-2FPYPEwdjZVNFLYiRKxdsTP3bRi0LPVPKb6NZji5oWcbKfIME93wvUGqCq8E-2BPk3wpJqB4GqzaEpZP7JqN1hR0oZI7ZiOJcPPCpcntSPUnUteC-2FX1dsLd-2BrChRIDxKAp3hlZ45K2VAYdLNp2pXP5WL-2BbnrizRwrR182jh1BUbPkE1YgtHC7czynMAlBIXcZqDdZQDDRR62GjJRAHQUo4HFoqxfehyqwpKcp35rGmt7IyV9bCtSDumt3IgSOpPBYavPhe6Nq9R9bcJG-2BjkJsgYF0sKUQ-3D-3D
+https://chaturbate.com/, chaturbate.com, email, https://chaturbate.com
+100
+
+https://chaturbate.com:443/
+65e8428f800c, 24279235, 1.295.0, https://chaturbate.com/, rmRmlstSpa2, false, username, enduser.id, header, G-GX0FLQH21P, en-us, anonymous, chaturbate.com, 874, page_view, name, csrfmiddlewaretoken, password, email, gender, subgender, lin, linkoska, linkoskali, linkoskali2, terms, referrer, self, https://chaturbate.com, https://js-agent.newrelic.com, https://www.google.com/recaptcha/, data:, https://static-pub.highwebmedia.com, blob, enforce, 6LdpEXsUAAAAAMkkjaaqylB3rEhR7oPZmLjSjaps, 1000, user_uid, FL7SVWV, backend, true, action, :10,, params, :{},, flags, json
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/notifications/updates/?notification_type=twitter_feed&notification_type=offline_tip
+twitter_feed, lin, true
+75
+
+https://chaturbate.com:443/api/messaging/unread/
+username, name
+50
+
+https://chaturbate.com:443/api/ts/chat/message-render-options/
+true
+25
+
+https://chaturbate.com:443/api/ts/roomlist/room-list/?limit=90&offset=0
+7036, 913, 5308, :false,, false, username, 952, name, password, gender, lin, :11,, 1000, true, :10,
+100
+
+https://chaturbate.com:443/api/ts/hashtags/top_tags/?count=1000
+password, gender, lin, self
+100
+
+https://chaturbate.com:443/api/ts/roomlist/all-tags/?limit=90&offset=0
+password, gender, lin, self
+100
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,, true, :10,
+100
+
+https://chaturbate.com:443/push_service/auth/
+lin, UserFollowerTopic#UserFollowerTopic:FL7SVWV, FL7SVWV, UserMessageTopic#UserMessageTopic:FL7SVWV, UserChatMediaOpenedTopic#UserChatMediaOpenedTopic:FL7SVWV, UserChatMediaRemovedTopic#UserChatMediaRemovedTopic:FL7SVWV, UserPmReadTopic#UserPmReadTopic:FL7SVWV, UserIgnoreTopic#UserIgnoreTopic:FL7SVWV, UserTokenUpdateTopic#UserTokenUpdateTopic:FL7SVWV, UserOneClickTopic#UserOneClickTopic:FL7SVWV, UserAutoRefillAttemptTopic#UserAutoRefillAttemptTopic:FL7SVWV, UserLowBalanceTopic#UserLowBalanceTopic:FL7SVWV, UserNewsSeenTopic#UserNewsSeenTopic:FL7SVWV, OfflineTipNotificationTopic#OfflineTipNotificationTopic:FL7SVWV, UpdateOfflineTipNotificationTopic#UpdateOfflineTipNotificationTopic:FL7SVWV, backend, true, channel, user:grouped:FL7SVWV, flags
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,, true, :10,
+100
+
+https://thumb.live.mmcdn.com:443/riw/jimmymiacouple.jpg?58542026
+913
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, lin, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://thumb.live.mmcdn.com:443/riw/nuryforerogh.jpg?58542028
+272
+25
+
+https://thumb.live.mmcdn.com:443/riw/ashley_benson1.jpg?58542028
+lin
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://thumb.live.mmcdn.com:443/riw/kumfoxlive.jpg?1756260870
+952
+25
+
+https://thumb.live.mmcdn.com:443/riw/kumfoxlive.jpg?58542029
+952
+25
+
+https://thumb.live.mmcdn.com:443/riw/someone_sweet.jpg?58542029
+913
+25
+
+https://thumb.live.mmcdn.com:443/riw/kaliblakexo.jpg?58542031
+128
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+:false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://thumb.live.mmcdn.com:443/riw/daisykimvip.jpg?58542033
+913
+25
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, 1000, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, 1000, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, 1000, true, :10,
+100
+
+https://chaturbate.com:443/follow/api/online_followed_rooms/
+lin
+25
+
+https://chaturbate.com:443/api/ts/roomlist/rec-follow-room-list/?
+913, :false,, false, username, name, password, gender, :11,, 1000, true, :10,
+100
+
