@@ -1,0 +1,21 @@
+HTTP/2 200 OK
+Date
+Content-Type
+Content-Length
+Cf-Ray
+Vary
+Content-Language
+Content-Security-Policy
+Report-To
+Nel
+X-Frame-Options
+Cache-Control
+Set-Cookie
+X-Content-Type-Options
+X-Xss-Protection
+Referrer-Policy
+Via
+Alt-Svc
+Cf-Cache-Status
+Strict-Transport-Security
+Server

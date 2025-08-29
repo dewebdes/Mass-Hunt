@@ -39,6 +39,7 @@ export function csrfLadder(flow) {
 
     // 🧱 Build anomaly object
     const anomalyDetails = {
+        narrative: "302",
         timestamp: new Date().toISOString(),
         module: "csrfLadder",
         url: flow.url,
@@ -47,7 +48,6 @@ export function csrfLadder(flow) {
         pulseMs: flow.pulseMs,
         feedId: flow.feedId || "unknown",
         mirrorTag: flow.mirrorTag || "mirror-shard",
-        narrative: "302 redirect with CORS-relevant cookies in request",
         shardHint: "Potential CSRF exposure"
     };
 

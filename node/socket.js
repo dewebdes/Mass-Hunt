@@ -1,114 +1,232 @@
 import { WebSocketServer } from 'ws';
+import { spawn } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import readline from 'readline';
+
 import { corsChecker } from './diagnostics/corsChecker.js';
 import { isSimpleRequest } from './diagnostics/simpleRequestClassifier.js';
 import { cookieGhost } from './diagnostics/cookieGhost.js';
-import { csrfLadder } from './diagnostics/csrfLadder.js'; // 🧱 CSRF diagnostic
-import { isDomainBlocked } from './lib/domainBlocker.js'; // ⛔ Blocklist filter
+import { csrfLadder } from './diagnostics/csrfLadder.js';
+import { isDomainBlocked } from './lib/domainBlocker.js';
 import { xssEcho } from './diagnostics/xssEcho.js';
 import { storedXssArchivist } from './diagnostics/storedXssArchivist.js';
 import { scanResponse } from './diagnostics/sensitiveKeywordHunter.js';
+import { extractFallParams } from './diagnostics/fallparams.js';
+import { distillPatterns } from './utils/patternDistiller.js';
 
-const wss = new WebSocketServer({ port: 9090 });
-console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
+// 🔧 Resolve __dirname
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-wss.on('connection', socket => {
-    console.log(`[Mass-Mirror] ↪️ Socket connected.`);
+// 📂 Correct scoped domain path
+const scopedDomainPath = path.resolve(__dirname, '..', 'node', 'config', 'scopedDomain.json');
 
-    socket.on('message', msg => {
-        try {
-            const raw = msg.toString('utf8').trim();
-            if (!raw.startsWith('PAIR_FEED:')) {
-                console.log('⚠️ [UNHANDLED]', raw.slice(0, 100));
-                return;
+const scopedDomain = (() => {
+    try {
+        const config = JSON.parse(fs.readFileSync(scopedDomainPath, 'utf-8'));
+        const domain = config.domain;
+        if (!domain || typeof domain !== 'string') throw new Error('Missing or invalid "domain"');
+        return new URL(`https://${domain}`).hostname;
+    } catch (err) {
+        console.warn(`⚠️ Failed to read scopedDomain.json or parse domain: ${err.message}`);
+        return null;
+    }
+})();
+
+// 🧹 Ritual Prompt
+function promptResetLogs() {
+    return new Promise(resolve => {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        rl.question('🧹 Reset logs and memory before starting? (y/N): ', answer => {
+            rl.close();
+            resolve(answer.trim().toLowerCase() === 'y');
+        });
+    });
+}
+
+function clearFolder(folderPath) {
+    try {
+        const files = fs.readdirSync(folderPath);
+        for (const file of files) {
+            const filePath = path.join(folderPath, file);
+            if (fs.statSync(filePath).isFile()) {
+                fs.unlinkSync(filePath);
             }
+        }
+        console.log(`🧼 Cleared ${folderPath}`);
+    } catch (err) {
+        console.warn(`⚠️ Failed to clear ${folderPath}: ${err.message}`);
+    }
+}
 
-            const parts = raw.split('#massmirror#');
-            if (parts.length < 9) {
-                console.warn("⚠️ Feed structure invalid or incomplete");
-                console.log("🧪 Raw Feed:", raw);
-                return;
-            }
+// 🧠 URL Collector
+const collectedUrls = [];
 
-            // 🧠 Parse Feed
-            const flow = parseFeed(parts);
-            if (!flow) return;
+function saveDistilledUrls() {
+    try {
+        const distilled = distillPatterns(collectedUrls);
+        const outputPath = path.resolve(__dirname, 'logs', 'urls.txt');
+        const content = distilled.map(u => u.url).join('\n');
+        fs.writeFileSync(outputPath, content, 'utf8');
+        console.log(`🧠 Distilled URL patterns saved to ${outputPath}`);
+    } catch (err) {
+        console.warn(`⚠️ Failed to save distilled URLs: ${err.message}`);
+    }
+}
 
-            const domain = (() => {
-                try {
-                    return new URL(flow.url).hostname;
-                } catch {
-                    return null;
+
+
+// 🌀 Startup Ritual
+(async () => {
+    const shouldReset = await promptResetLogs();
+    if (shouldReset) {
+        clearFolder(path.resolve(__dirname, 'logs'));
+        clearFolder(path.resolve(__dirname, 'memory'));
+    }
+
+    const wss = new WebSocketServer({ port: 9090 });
+    console.log(`[Mass-Mirror] 🌀 WebSocket listening on port 9090`);
+
+    runShard('homeGlyphInitializer.js'); // 🧙‍♂️ Extract homepage echoes
+
+    wss.on('connection', socket => {
+        console.log(`[Mass-Mirror] ↪️ Socket connected.`);
+
+        socket.on('message', msg => {
+            try {
+                const raw = msg.toString('utf8').trim();
+                if (!raw.startsWith('PAIR_FEED:')) {
+                    console.log('⚠️ [UNHANDLED]', raw.slice(0, 100));
+                    return;
                 }
-            })();
 
-            if (isDomainBlocked(domain)) {
-                console.log(`🕳️ Skipped flow from blocked domain: ${domain}`);
-                return;
+                const parts = raw.split('#massmirror#');
+                if (parts.length < 9) {
+                    console.warn("⚠️ Feed structure invalid or incomplete");
+                    console.log("🧪 Raw Feed:", raw);
+                    return;
+                }
+
+                const flow = parseFeed(parts);
+                if (!flow) return;
+
+                const domain = (() => {
+                    try {
+                        return new URL(flow.url).hostname;
+                    } catch {
+                        return null;
+                    }
+                })();
+
+                if (isDomainBlocked(domain)) {
+                    console.log(`🕳️ Skipped flow from blocked domain: ${domain}`);
+                    return;
+                }
+
+                console.log(`\n📡 Feed Received → ${flow.feedId} [${flow.pulseMs}ms]`);
+                console.log(`🌍 ${flow.method} ${flow.url} → ${flow.statusCode}`);
+                console.log(`📝 Request Body Length: ${flow.requestBody.length}`);
+                console.log(`📦 Response Body Length: ${flow.responseBody.length}`);
+
+                if (flow?.url) {
+                    collectedUrls.push({ url: flow.url });
+                }
+
+                if (domain === scopedDomain) {
+                    extractFallParams(flow);
+                }
+
+                const corsResult = corsChecker(flow);
+                if (corsResult.flag) {
+                    console.log(`🛡️ CORS Flag: true`);
+                }
+
+                const ghostResult = cookieGhost({
+                    headers: flow.responseHeadersArray,
+                    origin: flow.url,
+                    phase: 'response'
+                });
+
+                if (ghostResult.flag) {
+                    console.log(`👻 Ghost Cookies: ${ghostResult.relevantCookies.length} flagged`);
+                }
+
+                const jsCookieResult = cookieGhost({
+                    requestHeaders: flow.requestHeadersArray,
+                    origin: flow.url,
+                    phase: 'request'
+                });
+
+                if (jsCookieResult.flag) {
+                    console.log(`🧬 JS-Set Cookies: ${jsCookieResult.jsCookies.length} detected`);
+                }
+
+                const csrfResult = csrfLadder(flow);
+                if (csrfResult.flag) {
+                    console.log(`⚠️ CSRF Ladder: ${csrfResult.cookies.length} CORS-relevant cookies → ${csrfResult.message}`);
+                }
+
+                const xssResult = xssEcho(flow);
+                if (xssResult.flag) {
+                    console.log(`⚠️ XSS Echo: ${xssResult.echoed.length} strings reflected`);
+                }
+
+                const storedXssResult = storedXssArchivist(flow);
+                if (storedXssResult.flag) {
+                    console.log(`🧠 Stored XSS: ${storedXssResult.message}`);
+                }
+
+                scanResponse(flow.responseBody, { url: flow.url });
+
+            } catch (err) {
+                console.error(`[Mass-Mirror] 💥 Failed to process feed: ${err.message}`);
             }
+        });
 
-            // 📡 Feed Summary
-            console.log(`\n📡 Feed Received → ${flow.feedId} [${flow.pulseMs}ms]`);
-            console.log(`🌍 ${flow.method} ${flow.url} → ${flow.statusCode}`);
-            console.log(`📝 Request Body Length: ${flow.requestBody.length}`);
-            console.log(`📦 Response Body Length: ${flow.responseBody.length}`);
+        socket.on('close', () => {
+            console.log(`[Mass-Mirror] 🔌 Socket disconnected.`);
+        });
+    });
 
-            // 🛡️ CORS Diagnostic
-            const corsResult = corsChecker(flow);
-            if (corsResult.flag) {
-                console.log(`🛡️ CORS Flag: true`);
-            }
+    // 🧩 Console Command Listener
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
-            // 🍪 Ghost Cookie Diagnostic (Response Phase)
-            const ghostResult = cookieGhost({
-                headers: flow.responseHeadersArray,
-                origin: flow.url,
-                phase: 'response'
-            });
-
-            if (ghostResult.flag) {
-                console.log(`👻 Ghost Cookies: ${ghostResult.relevantCookies.length} flagged`);
-            }
-
-            // 🧬 JS-Set Cookie Detection (Request Phase)
-            const jsCookieResult = cookieGhost({
-                requestHeaders: flow.requestHeadersArray,
-                origin: flow.url,
-                phase: 'request'
-            });
-
-            if (jsCookieResult.flag) {
-                console.log(`🧬 JS-Set Cookies: ${jsCookieResult.jsCookies.length} detected`);
-            }
-
-            // 🧱 CSRF Ladder Diagnostic
-            const csrfResult = csrfLadder(flow);
-            if (csrfResult.flag) {
-                console.log(`⚠️ CSRF Ladder: ${csrfResult.cookies.length} CORS-relevant cookies → ${csrfResult.message}`);
-            }
-
-            // 🧨 XSS Echo Diagnostic
-            const xssResult = xssEcho(flow);
-            if (xssResult.flag) {
-                console.log(`⚠️ XSS Echo: ${xssResult.echoed.length} strings reflected`);
-            }
-
-            const storedXssResult = storedXssArchivist(flow);
-            if (storedXssResult.flag) {
-                console.log(`🧠 Stored XSS: ${storedXssResult.message}`);
-            }
-
-            scanResponse(flow.responseBody, { url: flow.url });
-
-
-        } catch (err) {
-            console.error(`[Mass-Mirror] 💥 Failed to process feed: ${err.message}`);
+    rl.on('line', (input) => {
+        const command = input.trim().toLowerCase();
+        if (command === 'save()') {
+            saveDistilledUrls();
+        } else if (command === 'exit()') {
+            console.log('👋 Exiting Mass-Hunt...');
+            rl.close();
+            process.exit(0);
+        } else {
+            console.log(`⚠️ Unknown command: ${input.trim()}`);
         }
     });
+})();
 
-    socket.on('close', () => {
-        console.log(`[Mass-Mirror] 🔌 Socket disconnected.`);
+// 🔧 Ritual Shard Runner
+function runShard(name) {
+    const shardPath = path.resolve(__dirname, 'diagnostics', name);
+    const proc = spawn('node', [shardPath], {
+        stdio: 'inherit',
+        shell: true
     });
-});
+
+    proc.on('exit', code => {
+        const status = code === 0 ? '✅' : '⚠️';
+        console.log(`[Mass-Mirror] ${status} ${name} exited with code ${code}`);
+    });
+}
 
 // 🧩 Feed Parser Helper
 function parseFeed(parts) {
@@ -138,6 +256,10 @@ function parseFeed(parts) {
             return { name: name?.trim(), value: rest.join(':').trim() };
         });
 
+        const responseHeadersObj = Object.fromEntries(
+            responseHeadersArray.map(h => [h.name?.toLowerCase(), h.value])
+        );
+
         return {
             feedId,
             requestId,
@@ -147,13 +269,13 @@ function parseFeed(parts) {
             statusCode,
             requestHeadersArray,
             requestHeadersObj,
-            responseHeadersArray,
             requestBody: reqBody,
-            responseBody: resBody,
-            mirrorTag: "mirror-shard"
+            responseHeadersArray,
+            responseHeadersObj,
+            responseBody: resBody
         };
     } catch (err) {
-        console.warn("⚠️ Failed to parse feed:", err.message);
+        console.warn(`⚠️ Failed to parse feed: ${err.message}`);
         return null;
     }
 }
